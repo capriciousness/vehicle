@@ -150,7 +150,7 @@ window.onload=function(){
                 console.log("aaa");
             } ,
             error:function(){
-                $(this).parents('tr').remove()
+                //$(this).parents('tr').remove()
             }
 
         })

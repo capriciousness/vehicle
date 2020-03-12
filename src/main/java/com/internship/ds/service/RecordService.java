@@ -74,6 +74,10 @@ public class RecordService {
         JSONObject json = Objects.requireNonNull(p.getJSONObject("record"));
         Record record = JSONObject.toJavaObject(json, Record.class);
         record.setRealDepartDate(new Date());
+        int status = recordDao.findStatus(record.getVehicleId());
+        if(status == 0){
+            throw new ZcException(ExceptionEnums.NOTALLOWED);
+        }
         recordDao.aUpdate(record);
         recordDao.updateVehicle(record.getVehicleId());
 
